@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <limits.h>
 
 using namespace std;
 
@@ -34,18 +35,19 @@ space: O(1)
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        
-        int max_profit = 0; //create a variable called max_profit and initialize it to 0
-        int min_price = INT_MAX; //create a variable called min_price and initialize it to INT_MAX
+        int optimalProfit = 0; //create a variable called optimalProfit and initialize it to 0
+        int minPrice = INT_MAX; //create a variable called minPrice and initialize it to INT_MAX (macro that specifies the maximum value of an int)
+        //32-bit = 2,147,483,647 (2^31 - 1)
+        //64-bit = 9,223,372,036,854,775,807 (2^63 - 1)
         for (int i = 0; i < prices.size(); i++) { //for each element in the prices array
-            if (prices[i] < min_price) { //if the price of the ith element is less than the min_price
-                min_price = prices[i]; //set the min_price to the price of the ith element
+            if (prices[i] < minPrice) { //if the price of the ith element is less than the minPrice
+                minPrice = prices[i]; //set the minPrice to the price of the ith element
             }
-            if (prices[i] - min_price > max_profit) { //if the price of the ith element minus the min_price is greater than the max_profit
-                max_profit = prices[i] - min_price; //set the max_profit to the price of the ith element minus the min_price
+            if (prices[i] - minPrice > optimalProfit) { //if the price of the ith element minus the min_price is greater than the optimalProfit
+                optimalProfit = prices[i] - minPrice; //set the optimalProfit to the price of the ith element minus the minPrice
             }
         }
-        return max_profit; //return the max_profit
+        return optimalProfit; //return the optimalProfit
     }
 };
 
@@ -53,6 +55,7 @@ public:
 int main() {
     Solution s;
     vector<int> prices = {7,1,5,3,6,4};
-    cout << "The max profit of the stock is: " << s.maxProfit(prices) << endl;
+    //vector<int> prices = {7,6,4,3,1};
+    cout << "The max profit of the stock is: $" << s.maxProfit(prices) << endl;
     return 0;
 }
