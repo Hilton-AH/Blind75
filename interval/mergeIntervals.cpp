@@ -26,7 +26,7 @@ intervals[i].length == 2
 
 Difficulty: medium
 
-Time: O(n)
+Time: O(nlogn)
 Space: O(n)
 */
 
