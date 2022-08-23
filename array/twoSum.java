@@ -4,8 +4,8 @@ Given an array of integers nums and an integer target, return indices of the two
 
 difficulty: medium
 
-time: O(n)
-space: O(n)
+time: O(n^2)
+space: O(1)
 
  */
 
